@@ -1,6 +1,113 @@
 
-    const rulesImg = document.querySelector(".rulesImg");
+    const rulesImg = document.querySelector(".rulesImg"),
+        hands = document.querySelectorAll(".hands"),
+        home = document.getElementById("home"),
+        game = document.getElementById("game"),
+        handPlayer = document.getElementById("player-hand"),
+        handGame = document.querySelector(".game-hand"),
+        score = document.getElementById("score"),
+        playAgain = document.querySelector(".play-again"),
+        countdown = document.querySelector(".countdown");
+        let count = 3;
 
+        console.log(hands)
+
+    function gameSection(player,nu){
+        // home.style.display = "none";
+        // game.style.display = "flex";
+
+        switch(nu){
+            case 0:
+                player.style.cssText = `
+                    background-color: hsl(230, 89%, 62%);
+                    box-shadow: inset 0px -10px 5px rgba(0, 0, 0, 0.342);`
+                player.innerHTML = `
+                    <div class="hand-inside">
+                        <img src="images/icon-paper.svg" alt="hand paper">
+                    </div>
+                `
+            break;
+            case 1:
+                player.style.cssText = `
+                    background-color:hsl(39, 89%, 49%);
+                   box-shadow: inset 0px -10px 5px rgba(0, 0, 0, 0.342);`
+                player.innerHTML = `
+                    <div class="hand-inside">
+                        <img src="images/icon-scissors.svg" alt="hand paper">
+                    </div>`
+            break;
+            case 2:
+                player.style.cssText = `
+                    background-color:hsl(349, 71%, 52%);
+                    box-shadow: inset 0px -10px 5px rgba(0, 0, 0, 0.342);`
+                player.innerHTML = `
+                    <div class="hand-inside">
+                        <img src="images/icon-rock.svg" alt="hand paper">
+                    </div>`
+            break;
+        }
+    };
+
+    function gameResult(plaNum,gamNum){
+       let record = 0;
+        let msgResult = document.getElementById("msgRe");
+        if(plaNum == gamNum){
+            msgResult.textContent = "YOU DRAW";
+        }else if((plaNum=== 0 && gamNum === 1) || (plaNum === 1 && gamNum === 2)||(plaNum === 2 && gamNum === 0)){
+            msgResult.textContent = "YOU LOSE";
+            record = 0;
+        }else if((plaNum === 0 && gamNum === 2) || (plaNum === 1 && gamNum === 0) || (plaNum === 1 && gamNum === 2) ||(plaNum === 2 && gamNum === 1) ){
+            msgResult.textContent = "YOU WIN!";
+            record++;
+        };
+        score.textContent = record;
+    };
+
+    function setcountDown(e){
+
+        home.style.display = "none";
+        countdown.style.display = "block";
+
+        let stopTime = setInterval(()=>{
+            if(count == 1){ 
+                count = 4;
+
+                clearInterval(stopTime);
+
+                let handGameNumber = Math.trunc(Math.random()*3);
+    
+                gameSection(handGame, handGameNumber);
+                // setcountDown();
+                if(e.target.matches("#paper")|| e.target.matches("#paper *") ){
+                    gameSection(handPlayer,0)
+                    gameResult(0,handGameNumber);
+                }else if(e.target.matches("#scissors")||e.target.matches("#scissors *")){
+                    gameSection(handPlayer,1)
+                    gameResult(1,handGameNumber);
+                }else if(e.target.matches("#rock *") || e.target.matches("#rock")){
+                    gameSection(handPlayer,2)
+                    gameResult(2,handGameNumber);
+                };
+
+                countdown.style.display = "none";
+                game.style.display = "flex";  
+            };
+            countdown.innerHTML = `<h1>${--count}</h1>`;
+        },1000);
+    };
+
+    // Event clic player
+
+    hands.forEach(e => {
+        e.addEventListener("click",(e)=>{
+            setcountDown(e)
+        });
+    });
+   
+    playAgain.addEventListener("click",(e)=>{
+        home.style.display = "block";
+        game.style.display = "none"
+    })
     document.getElementById("rules").addEventListener("click",(e)=> rulesImg.style.cssText=`
         visibility:visible;
         width: 90%;
@@ -12,4 +119,4 @@
         width: 0%;
         height: 0%;
         top: -100%;
-    `})
+    `});

@@ -30,36 +30,52 @@
       </div>
       <div class="header-score" >
         <p>score</p>
-        <div id="score">00</div>
+        <div id="score">0</div>
       </div>
     </div>
   </header>
-  <main  class="main-select-hand">
-    <div>
-      <div class="hands hand-paper">
-        <div class="hand-inside">
-          <img src="images/icon-paper.svg" alt="img hand paper">
+  <main>
+    <section id="home"  class="main-select-hand">
+      <div>
+        <div id="paper" class="hands hand-paper">
+          <div class="hand-inside">
+            <img src="images/icon-paper.svg" alt="img hand paper">
+          </div>
+        </div>
+        <div id="scissors" class="hands hand-scissors" >
+          <div class="hand-inside">
+            <img src="images/icon-scissors.svg" alt="img hand scissors">
+          </div>
         </div>
       </div>
-      <div class="hands hand-scissors" >
-        <div class="hand-inside">
-          <img src="images/icon-scissors.svg" alt="img hand scissors">
+      <div>
+        <div id="rock" class="hands hand-rock">
+          <div class="hand-inside">
+            <img src="images/icon-rock.svg" alt="img hand rock">
+          </div>
         </div>
       </div>
-    </div>
-    <div>
-      <div class="hands hand-rock">
-        <div class="hand-inside">
-          <img src="images/icon-rock.svg" alt="img hand rock">
+    </section>
+    <section class="countdown">
+      <h1>3</h1>
+    </section>
+    <section id="game" class="main-result">
+        <div class="result-hands">
+          <div id="player-hand" class="player-hand section-game-hands"> 
+          </div>
+          <!-- <p class="p-you">YOU PICKED</p> -->
+         
+          <div class="game-hand section-game-hands">
+          </div>
+          <!-- <p class="p-house">THE HOUSE PICKED</p> -->
+          
         </div>
-      </div>
-    </div>
+        <div class="result-msg">
+          <h1 id="msgRe">YOU LOSE</h1>
+          <button class="play-again">PLAY AGAIN</button>
+        </div>
+      </section>
   </main>
-  <!-- <main class="main-result">
-      <div class="player-hand hands">
-      </div>
-      <div class="game-hand hands"></div>
-  </main> -->
   <footer>
     <div class="rulesImg">
       <h1>RULES</h1>
