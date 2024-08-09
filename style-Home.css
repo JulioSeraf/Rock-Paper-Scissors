@@ -55,15 +55,31 @@ header{
 }
 main{
     flex-grow: 5;
+}
+.main-select-hand{
     background-image: url(images/bg-triangle.svg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 50% 40%;
 }
+
+.main-result{
+   position: relative;
+}
+
+.player-hand{
+    background-color:hsl(237, 49%, 15%);
+    top: 20%;
+    left: 10%;
+}
+.game-hand{
+    background-color:hsl(237, 49%, 15%);
+    top: 20%;
+    right: 10%;
+}
 main>div{
     position: relative;
     height: 50%;
-  
 }
 .hands{
     display: flex;
@@ -71,7 +87,6 @@ main>div{
     width: clamp(10%,140px, 50%);
     height:clamp(10%,150px, 50%);
     border-radius: 50%;
-
 }
 .hands:hover{
     box-shadow: 0px 0px 5px white;
