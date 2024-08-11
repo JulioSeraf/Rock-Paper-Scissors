@@ -131,6 +131,7 @@ div .hand-rock{
 
 
 .main-result{
+    display: none;
     flex-direction: column;
     align-items: center;
     position: relative;
@@ -159,8 +160,13 @@ div .hand-rock{
 }
 .p-you{
     position: absolute;
-    top: 53%;
-    left: 15%;
+    top: 58%;
+    left: 17%;
+}
+.p-house{
+    position: absolute;
+    top: 58%;
+    right: 12%;
 }
 .result-msg > h1{
     font-size: 4em;
