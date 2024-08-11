@@ -9,16 +9,30 @@
     }
 
     section{
-        max-width: 500px;
+        max-width: 450px;
         margin: auto;
     }
     .hands{
-        width: clamp(10%,170px, 60%);
-        height:clamp(10%,190px, 60%);
+        width: 40%;
+        height: 80%;
     }
     .main-select-hand{
-        background-size: 30% 40%;
+        background-size: 50% 50%;
+
     }
+    div .hand-paper{
+        top:20%;
+        left: 0%;
+    }
+
+    div .hand-scissors{
+        top: 20%;
+        right: 0%;
+    }
+    div .hand-rock{
+        top: 20%;
+    }
+
     footer{
         flex-grow: 0;
         display: flex;
