@@ -1,0 +1,32 @@
+@media screen and (min-width:450px) {
+    body{
+        max-width:100%;
+    }
+    .header-div{
+        width: 55%;
+        min-width: 400px;
+        /* height: 75%; */
+    }
+
+    section{
+        max-width: 500px;
+        margin: auto;
+    }
+    .hands{
+        width: clamp(10%,170px, 60%);
+        height:clamp(10%,190px, 60%);
+    }
+    .main-select-hand{
+        background-size: 30% 40%;
+    }
+    footer{
+        flex-grow: 0;
+        display: flex;
+        justify-content: right;
+    }
+    footer > button{
+        min-width: 50px; 
+        margin-right: 30px;   
+        
+    }
+}

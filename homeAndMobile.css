@@ -199,6 +199,9 @@ footer>button:hover{
     border: 3px solid white;
 }
 
+
+/* rules styles */
+
 .rulesImg{
     display:flex;
     flex-direction: column;
