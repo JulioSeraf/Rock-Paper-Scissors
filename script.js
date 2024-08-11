@@ -9,6 +9,7 @@
         playAgain = document.querySelector(".play-again"),
         countdown = document.querySelector(".countdown");
         let count = 3;
+        let record=0;
 
         console.log(hands)
 
@@ -49,16 +50,16 @@
     };
 
     function gameResult(plaNum,gamNum){
-       let record = 0;
         let msgResult = document.getElementById("msgRe");
         if(plaNum == gamNum){
-            msgResult.textContent = "YOU DRAW";
+            msgResult.textContent = "YOU TIED";
+            record = record + 0.5;
         }else if((plaNum=== 0 && gamNum === 1) || (plaNum === 1 && gamNum === 2)||(plaNum === 2 && gamNum === 0)){
             msgResult.textContent = "YOU LOSE";
             record = 0;
         }else if((plaNum === 0 && gamNum === 2) || (plaNum === 1 && gamNum === 0) || (plaNum === 1 && gamNum === 2) ||(plaNum === 2 && gamNum === 1) ){
             msgResult.textContent = "YOU WIN!";
-            record++;
+            record = record + 1;
         };
         score.textContent = record;
     };

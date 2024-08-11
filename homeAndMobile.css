@@ -188,7 +188,6 @@ div .hand-rock{
 
 .countdown{
     display:none;
-    position: absolute;
     text-align: center;
 }
 .countdown>h1{
