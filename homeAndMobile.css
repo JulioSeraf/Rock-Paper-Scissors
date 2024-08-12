@@ -84,10 +84,8 @@ section{
 .hands{
     display: flex;
     position: absolute;
-    /* width: clamp(10%,140px, 50%);
-    height:clamp(10%,150px, 50%); */
     width: 39%;
-    height: 42%;
+    height: 59%;
     border-radius: 50%;
 }
 .hands:active{
