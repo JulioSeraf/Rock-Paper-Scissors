@@ -11,8 +11,51 @@
         let count = 3;
         let record=0;
 
+        const choseHands = {
+            rock:{
+                img:"images/icon-rock.svg",
+                alt:"img hand rock",
+                backgroundColor:"hsl(349, 71%, 52%)"
+            },
+            paper:{
+                img:"images/icon-paper.svg",
+                alt:"img hand paper",
+                backgroundColor:" hsl(230, 89%, 62%)"
+            },
+            scissors:{
+                img:"images/icon-scissors.svg",
+                alt:"img hand scissors",
+                backgroundColor:"hsl(39, 89%, 49%)"
+            },
+            spoke:{
+                img:"images/icon-spock.svg",
+                alt:"img hand spock",
+                backgroundColor:" hsl(189, 59%, 53%)"
+            },
+            lizard:{
+                img:"images/icon-lizard.svg",
+                alt:"img hand lizard",
+                backgroundColor:" hsl(261, 73%, 60%)"
+            }
+        }
+
         console.log(hands)
 
+    function swipeArea(){
+        let startTouch = 0,
+            endTouch = 0;
+
+        home.addEventListener("touchstart",(e)=>{
+            startTouch = e.changedTouches[0].screenX;
+        },false)
+        home.addEventListener("touchend",(e)=>{
+            endTouch = e.changedTouches[0].screenX;
+        },false)
+
+        console.log( endTouch, startTouch)
+    }
+    swipeArea();
+        
     function gameSection(player,nu){
         // home.style.display = "none";
         // game.style.display = "flex";
@@ -121,3 +164,5 @@
         height: 0%;
         top: -100%;
     `});
+
+
