@@ -7,9 +7,12 @@
         handGame = document.querySelector(".game-hand"),
         score = document.getElementById("score"),
         playAgain = document.querySelector(".play-again"),
-        countdown = document.querySelector(".countdown");
+        countdown = document.querySelector(".countdown"),
+        touchscrren = document.querySelector(".touch");
         let count = 3;
         let record=0;
+        let startTouch = 0,
+        endTouch = 0;
 
         const choseHands = {
             rock:{
@@ -42,18 +45,49 @@
         console.log(hands)
 
     function swipeArea(){
-        let startTouch = 0,
-            endTouch = 0;
 
+        
         home.addEventListener("touchstart",(e)=>{
+
             startTouch = e.changedTouches[0].screenX;
-        },false)
-        home.addEventListener("touchend",(e)=>{
-            endTouch = e.changedTouches[0].screenX;
+            document.body.style.backgroundColor = "red"
+            // console.log(startTouch)
+            // handleScreen(startTouch)
         },false)
 
-        console.log( endTouch, startTouch)
+        // home.addEventListener("touchend",(e)=>{
+        //     endTouch = e.changedTouches[0].screenX;
+        //     handleScreen(endTouch)
+        //     // console.log(endTouch, startTouch)
+        // },false)
+
+        let elementPosition = 0;
+        home.addEventListener("touchmove", (e)=>{
+            let touchloq = e.changedTouches[0].screenX;
+            let positiontouch = startTouch - touchloq;
+           console.log(positiontouch)
+           
+          if(positiontouch < -50){
+            
+          }
+            
+        })
+        
+        
     }
+
+    // function handleScreen(start,end){
+        
+    // console.log( endTouch, startTouch)
+
+    //     if(start > end){
+    //         simpleGame.style.cssText = "left:0;"
+    //     }
+    //     if(end > start){
+    //         bonusGame.style.cssText = ""
+            
+    //     }
+    // }
     swipeArea();
         
     function gameSection(player,nu){
