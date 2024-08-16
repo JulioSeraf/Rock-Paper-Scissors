@@ -50,28 +50,59 @@
         home.addEventListener("touchstart",(e)=>{
 
             startTouch = e.changedTouches[0].screenX;
-            document.body.style.backgroundColor = "red"
             // console.log(startTouch)
             // handleScreen(startTouch)
         },false)
 
         // home.addEventListener("touchend",(e)=>{
         //     endTouch = e.changedTouches[0].screenX;
-        //     handleScreen(endTouch)
-        //     // console.log(endTouch, startTouch)
+        //     // handleScreen(endTouch)
+        //     console.log(endTouch)
         // },false)
-
-        let elementPosition = 0;
+        let moveElemento = true;
+        let elementPosition = -100;
+        
         home.addEventListener("touchmove", (e)=>{
             let touchloq = e.changedTouches[0].screenX;
             let positiontouch = startTouch - touchloq;
-           console.log(positiontouch)
-           
-          if(positiontouch < -50){
             
-          }
+           
+
+           if(positiontouch < 0 && positiontouch > -100 && moveElemento == true){
+            home.style.cssText = `left:${positiontouch}%;`;
+            moveElemento = false;
+            if(positiontouch <= -50 ){
+            home.style.cssText = `left:-100%;
+            transition:1s all;`;
+            }
+            if(positiontouch >= -50 ){
+                home.style.cssText = `left:0%;
+                transition:1s all;`;
+            }
+           }
+           if(positiontouch > 0 && positiontouch < 100 && moveElemento == false){
+            positiontouch = positiontouch - 100;
+            console.log(positiontouch)
+            home.style.cssText = `left:${positiontouch}%;`;
+            moveElemento = true;
+            if(positiontouch >= -50 ){
+                home.style.cssText = `left:0%;
+                transition:1s all;`;
+            }
+            if(positiontouch <= -50 ){
+                home.style.cssText = `left:-100%;
+                transition:1s all;`;
+                }
+        }
+
+
+        //   home.style.cssText = `left:${positiontouch}%;`;
+        //   if(positiontouch < -50 ){
+        //     home.style.cssText = "left:0%;"
+        //   }
             
         })
+        
         
         
     }
