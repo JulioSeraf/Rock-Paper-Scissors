@@ -11,38 +11,11 @@
         countdown = document.querySelector(".countdown"),
         touchscrren = document.querySelector(".touch"),
         pagGame = document.querySelector("#pag-game"),
-        imgRules = document.querySelector("#img-rules");
+        imgRules = document.querySelector("#img-rules"),
+        screenButtonGame = document.querySelector(".screenButtonGame");
         let count = 3;
         let record=0;
         let elementalreadyMoved = false;
-
-        const choseHands = {
-            rock:{
-                img:"images/icon-rock.svg",
-                alt:"img hand rock",
-                backgroundColor:"hsl(349, 71%, 52%)"
-            },
-            paper:{
-                img:"images/icon-paper.svg",
-                alt:"img hand paper",
-                backgroundColor:" hsl(230, 89%, 62%)"
-            },
-            scissors:{
-                img:"images/icon-scissors.svg",
-                alt:"img hand scissors",
-                backgroundColor:"hsl(39, 89%, 49%)"
-            },
-            spoke:{
-                img:"images/icon-spock.svg",
-                alt:"img hand spock",
-                backgroundColor:" hsl(189, 59%, 53%)"
-            },
-            lizard:{
-                img:"images/icon-lizard.svg",
-                alt:"img hand lizard",
-                backgroundColor:" hsl(261, 73%, 60%)"
-            }
-        };
 
     function swipeArea(){
         let startTouch = 0,
@@ -220,6 +193,7 @@
                 }
 
                 countdown.style.display = "none";
+                screenButtonGame.style.display = "none";
                 game.style.display = "flex";  
             };
             countdown.innerHTML = `<h1>${--count}</h1>`;
@@ -241,6 +215,8 @@
     playAgain.addEventListener("click",(e)=>{
         home.style.display = "block";
         game.style.display = "none";
+        screenButtonGame.style.display = "block";
+
     });
     document.getElementById("rules").addEventListener("click",(e)=> rulesImg.style.cssText=`
         visibility:visible;
