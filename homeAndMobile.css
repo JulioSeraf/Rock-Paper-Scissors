@@ -78,20 +78,16 @@ section{
 .main-select-hand{
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: auto 35%;
+    
     width: 100vw;
     height: 100%;
     }
 
 .simpleGame{
-        float: right;
-        background-image: url(images/bg-pentagon.svg);
-        
-    }
+    background-image: url(images/bg-triangle.svg);
+    background-size: auto 35%;
     
-.bonusGame{
-        background-image: url(images/bg-triangle.svg);
-    }
+}
     
 .main-select-hand>div{
     position: relative;
@@ -123,17 +119,17 @@ section{
     margin: auto;
     
 }
-.bonusGame div .hand-paper{
+.simpleGame div .hand-paper{
     background-color: hsl(230, 89%, 62%);
     top: 45%;
     left: 7%;
 }
-.bonusGame div .hand-scissors{
+.simpleGame div .hand-scissors{
     background-color:hsl(39, 89%, 49%);
     top: 45%;
     right: 7%;
 }
-.bonusGame div .hand-rock{
+.simpleGame div .hand-rock{
     background-color:hsl(349, 71%, 52%);
     top: 0%;
     left: 50%;
@@ -218,7 +214,7 @@ footer{
 .screenButtonGame{
     position:absolute;
     background-color: white;
-    bottom: 16%;
+    bottom: 14%;
     left: 50%;
     transform: translate(-50%);
     background-color: inherit;

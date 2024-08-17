@@ -1,0 +1,43 @@
+
+.bonusGame{
+    float: right;
+    background-image: url(images/bg-pentagon.svg);
+    background-size: auto 45%; background-position-y:40%;
+}
+
+.hands-bonus{
+    display: flex;
+    position: absolute;
+    width: 30%;
+    height: 45%;
+    border-radius: 50%;
+    box-shadow: inset 0px -7px 1px rgba(0, 0, 0, 0.342);
+}
+.bonusGame .hand-scissors{
+    background-color:hsl(39, 89%, 49%);
+    bottom: 30%;
+    transform: translate(-50%);
+    left: 50%;
+}
+.bonusGame .hand-spock{
+    background-color: hsl(189, 59%, 53%);
+    bottom: -5%;
+    left: 5%;
+}
+.bonusGame .hand-paper{
+    background-color: hsl(230, 89%, 62%);
+    right: 5%;
+    bottom: -5%;
+    
+}
+.bonusGame .hand-rock{
+    background-color:hsl(349, 71%, 52%);
+    right: 13%;
+    top: 14%;
+}
+.bonusGame .hand-lizard{
+    background-color: hsl(261, 73%, 60%);
+    left: 13%;
+    top: 14%;
+
+}
