@@ -11,8 +11,6 @@
         touchscrren = document.querySelector(".touch");
         let count = 3;
         let record=0;
-        let startTouch = 0,
-        endTouch = 0;
 
         const choseHands = {
             rock:{
@@ -40,91 +38,67 @@
                 alt:"img hand lizard",
                 backgroundColor:" hsl(261, 73%, 60%)"
             }
-        }
-
-        console.log(hands)
+        };
 
     function swipeArea(){
-
+        let startTouch = 0,
+        touchloq = 0;
+        let elementalreadyMoved = false;
         
         home.addEventListener("touchstart",(e)=>{
-
             startTouch = e.changedTouches[0].screenX;
-            // console.log(startTouch)
-            // handleScreen(startTouch)
-        },false)
+        },false);
 
-        // home.addEventListener("touchend",(e)=>{
-        //     endTouch = e.changedTouches[0].screenX;
-        //     // handleScreen(endTouch)
-        //     console.log(endTouch)
-        // },false)
-        let moveElemento = true;
-        let elementPosition = -100;
         
         home.addEventListener("touchmove", (e)=>{
-            let touchloq = e.changedTouches[0].screenX;
+            
+            touchloq = e.changedTouches[0].screenX;
             let positiontouch = startTouch - touchloq;
-            
-           
 
-           if(positiontouch < 0 && positiontouch > -100 && moveElemento == true){
-            home.style.cssText = `left:${positiontouch}%;`;
-            moveElemento = false;
-            if(positiontouch <= -50 ){
-            home.style.cssText = `left:-100%;
-            transition:1s all;`;
-            }
-            if(positiontouch >= -50 ){
-                home.style.cssText = `left:0%;
-                transition:1s all;`;
-            }
-           }
-           if(positiontouch > 0 && positiontouch < 100 && moveElemento == false){
-            positiontouch = positiontouch - 100;
-            console.log(positiontouch)
-            home.style.cssText = `left:${positiontouch}%;`;
-            moveElemento = true;
-            if(positiontouch >= -50 ){
-                home.style.cssText = `left:0%;
-                transition:1s all;`;
-            }
-            if(positiontouch <= -50 ){
-                home.style.cssText = `left:-100%;
-                transition:1s all;`;
-                }
-        }
+            if(window.innerWidth <= 450 ){
+                
+                if(positiontouch > 0 && positiontouch < 100 && elementalreadyMoved == false){
+                    console.log(positiontouch)
+                
+                    if(positiontouch >= 50 ){
+                    home.style.cssText = `left:-100%;
+                    transition:1s all;`;
+                    elementalreadyMoved = true;
+                    };
+                    if(positiontouch < 50 ){
+                        home.style.cssText = `left:0%;
+                    transition:1s all;`;
+                    };
+                    
+                    if(window.innerWidth >= 450) document.querySelector(".simpleGame").style.display = "none";
+                };
 
 
-        //   home.style.cssText = `left:${positiontouch}%;`;
-        //   if(positiontouch < -50 ){
-        //     home.style.cssText = "left:0%;"
-        //   }
-            
-        })
-        
-        
+                if(positiontouch < 0 && positiontouch > -100 && elementalreadyMoved == true){
+                    console.log(positiontouch)
+                    if(positiontouch <= -50 ){
+                        home.style.cssText = `left:0%;
+                        transition:1s all;`;
+                        elementalreadyMoved = false;
+                    };
+                    if(positiontouch > -50){
+                        home.style.cssText = `left:-100%;
+                        transition: 1s all;`
+                    }
+                    if(window.innerWidth >= 450) document.querySelector(".bonusGame").style.display = "none";
+                    
+                    };
+
+            }
+        },false);
+    };
+    function checkedArea(){
         
     }
 
-    // function handleScreen(start,end){
-        
-    // console.log( endTouch, startTouch)
-
-    //     if(start > end){
-    //         simpleGame.style.cssText = "left:0;"
-    //     }
-    //     if(end > start){
-    //         bonusGame.style.cssText = ""
-            
-    //     }
-    // }
     swipeArea();
-        
+    
     function gameSection(player,nu){
-        // home.style.display = "none";
-        // game.style.display = "flex";
-
         switch(nu){
             case 0:
                 player.style.cssText = `
@@ -186,7 +160,7 @@
                 let handGameNumber = Math.trunc(Math.random()*3);
     
                 gameSection(handGame, handGameNumber);
-                // setcountDown();
+
                 if(e.target.matches("#paper")|| e.target.matches("#paper *") ){
                     gameSection(handPlayer,0)
                     gameResult(0,handGameNumber);

@@ -28,21 +28,38 @@
     </div>
   </header>
   <main>
-    <section id="home">
-      <div class="main-select-hand simpleGame">
+    <section id="home" class="home">
+      <div   class="main-select-hand simpleGame">
         <div>
+
           <div id="paper" class="hands hand-paper">
             <div class="hand-inside">
               <img src="images/icon-paper.svg" alt="img hand paper">
             </div>
           </div>
+
           <div id="scissors" class="hands hand-scissors" >
             <div class="hand-inside">
               <img src="images/icon-scissors.svg" alt="img hand scissors">
             </div>
           </div>
+
+          <div id="spock" class="hands hand-spock" >
+            <div class="hand-inside">
+              <img src="images/icon-spock.svg" alt="img hand scissors">
+            </div>
+          </div>
+
         </div>
+
         <div>
+
+          <div id="lizard" class="hands hand-lizard" >
+            <div class="hand-inside">
+              <img src="images/icon-lizard.svg" alt="img hand scissors">
+            </div>
+          </div>
+
           <div id="rock" class="hands hand-rock">
             <div class="hand-inside">
               <img src="images/icon-rock.svg" alt="img hand rock">
@@ -51,29 +68,36 @@
         </div>
       </div>
 
-    <!-- <div class="touch"></div> -->
+      <div class="main-select-hand bonusGame">
 
-      <div   class="main-select-hand bonusGame">
         <div>
+
           <div id="paper" class="hands hand-paper">
             <div class="hand-inside">
-              <img src="images/icon-spock.svg" alt="img hand paper">
+              <img src="images/icon-paper.svg" alt="img hand paper">
             </div>
           </div>
+
           <div id="scissors" class="hands hand-scissors" >
             <div class="hand-inside">
               <img src="images/icon-scissors.svg" alt="img hand scissors">
             </div>
           </div>
+
         </div>
+
         <div>
+
           <div id="rock" class="hands hand-rock">
             <div class="hand-inside">
               <img src="images/icon-rock.svg" alt="img hand rock">
             </div>
           </div>
+
         </div>
+
       </div>
+
     </section>
     <section class="countdown">
       <h1>3</h1>
@@ -96,6 +120,11 @@
     </section>
   </main>
   <footer>
+    <div class="screenButtonGame">
+      <input type="radio" checked id="buttonSimGame">
+      <div><p>Bonus Game &rarr; </p></div>
+      <input type="radio" id="buttonBonGame">
+    </div>
     <div class="rulesImg">
       <h1>RULES</h1>
       <img src="images/image-rules.svg" alt="Game-rules">

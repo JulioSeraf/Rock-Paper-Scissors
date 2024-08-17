@@ -68,14 +68,14 @@ main{
     overflow: hidden;
 }
 section{
+    height: 100%;
+}
+.home{
     position: absolute;
     width: 200%;
     height: 100%;
 }
 .main-select-hand{
-    /* left: 50%;
-    transform: translate(-50%); */
-    background-image: url(images/bg-triangle.svg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: auto 35%;
@@ -84,18 +84,15 @@ section{
     }
 
 .simpleGame{
-    float: right;
-}
-.bunosGame{
-
-}
-/* .touch{
-    position:absolute;
-    background-color: white;
-    height: 100%;
-    width:100%;
-    z-index: 1;
-} */
+        float: right;
+        background-image: url(images/bg-pentagon.svg);
+        
+    }
+    
+.bonusGame{
+        background-image: url(images/bg-triangle.svg);
+    }
+    
 .main-select-hand>div{
     position: relative;
     height: 50%;
@@ -126,19 +123,18 @@ section{
     margin: auto;
     
 }
-div .hand-paper{
+.bonusGame div .hand-paper{
     background-color: hsl(230, 89%, 62%);
     top: 45%;
     left: 7%;
 }
-div .hand-scissors{
+.bonusGame div .hand-scissors{
     background-color:hsl(39, 89%, 49%);
     top: 45%;
     right: 7%;
 }
-div .hand-rock{
+.bonusGame div .hand-rock{
     background-color:hsl(349, 71%, 52%);
-    
     top: 0%;
     left: 50%;
     transform:translate(-50%);
@@ -217,6 +213,23 @@ footer{
     align-items:center;
     justify-content: center;
     flex-grow: 1;
+
+}
+.screenButtonGame{
+    position:absolute;
+    background-color: white;
+    bottom: 16%;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 1;
+    background-color: inherit;
+}
+.screenButtonGame > div{
+    position: absolute;
+    color: hsl(229, 25%, 31%); 
+    left: 50%;
+    transform: translate(-50%);
+    width: max-content;
 
 }
 footer>button{
