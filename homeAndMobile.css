@@ -213,19 +213,13 @@ footer{
 }
 .screenButtonGame{
     position:absolute;
-    background-color: white;
     bottom: 14%;
     left: 50%;
     transform: translate(-50%);
     background-color: inherit;
-}
-.screenButtonGame > div{
-    position: absolute;
-    color: hsl(229, 25%, 31%); 
-    left: 50%;
-    transform: translate(-50%);
-    width: max-content;
-
+    color:  hsl(217, 16%, 45%, 80%);
+    font-size: 1.5em;
+    text-align: center;
 }
 footer>button{
     color: hsl(218, 23%, 70%);
