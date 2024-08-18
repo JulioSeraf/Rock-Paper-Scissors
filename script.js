@@ -12,11 +12,14 @@
         touchscrren = document.querySelector(".touch"),
         pagGame = document.querySelector("#pag-game"),
         imgRules = document.querySelector("#img-rules"),
-        screenButtonGame = document.querySelector(".screenButtonGame");
-        let count = 3;
-        let record=0;
-        let elementalreadyMoved = false;
+        screenButtonGame = document.querySelector(".screenButtonGame"),
+        player2Game = document.getElementById("modeGame");
+    let count = 3,
+        record=0,
+        elementalreadyMoved = false,
+        mode2player = false;
 
+    // FUNCION DE SCROLL LATERAL
     function swipeArea(){
         let startTouch = 0,
         touchloq = 0;
@@ -43,6 +46,7 @@
                     pagGame.innerHTML = "&larr; SIMPLES GAME"
                     imgRules.src = "images/image-rules-bonus.svg"
                     };
+
                     if(positiontouch < 50 ){
                         home.style.cssText = `left:0%;
                     transition:1s all;`;
@@ -53,7 +57,7 @@
 
 
                 if(positiontouch < 0 && positiontouch > -100 && elementalreadyMoved == true){
-                    console.log(positiontouch)
+        
                     if(positiontouch <= -50 ){
                         home.style.cssText = `left:0%;
                         transition:1s all;`;
@@ -61,23 +65,22 @@
                         pagGame.innerHTML = "BONUS GAME &rarr;";
                         imgRules.src = "images/image-rules.svg"
                     };
+
                     if(positiontouch > -50){
                         home.style.cssText = `left:-100%;
                         transition: 1s all;`
-                    }
-                    if(window.innerWidth >= 450) document.querySelector(".bonusGame").style.display = "none";
-                    
                     };
 
-            }
+                    if(window.innerWidth >= 450) document.querySelector(".bonusGame").style.display = "none";
+                    
+                };
+            };
         },false);
     };
-    function checkedArea(){
-        
-    }
 
     swipeArea();
-    
+
+    // FUNCION STYLE DE HAND ALEATORIA
     function playerSelectStyle(player,nu){
         switch(nu){
             case 0:
@@ -129,6 +132,7 @@
         }
     };
 
+    // FUNCION DE LOGICA DE JOGO
     function gameResult(plaNum,gamNum){
         let msgResult = document.getElementById("msgRe");
 
@@ -155,14 +159,33 @@
         score.textContent = record;
     };
 
-    function simpleGame(){
+    function Player2(){
+        document.addEventListener("click",(e)=>{
+            console.log(e.target)
 
-    }
-    function setcountDown(e){
+            if(e.target.matches("#modeGame")){
+                document.querySelector(".choose-yes-no").style.display = "block";
+            };
+
+            if(e.target.matches("#noBut")){
+                document.querySelector(".choose-yes-no").style.display = "none";
+                return;
+            }else if(e.target.matches("#yesBut")){
+                player2Game.textContent = "1 PLAYER"
+                document.querySelector(".choose-yes-no").style.display = "none";
+                mode2player = true;
+
+
+            };
+
+        });
+    };
+    Player2();
+    
+    function setcountDown(e,play1,play2){
         home.style.display = "none";
         countdown.style.display = "block";
         
-
         let stopTime = setInterval(()=>{
         let handGameNumber;
 
@@ -170,7 +193,7 @@
                 count = 4;
 
                 clearInterval(stopTime);
-
+        
                 elementalreadyMoved == false ? handGameNumber = Math.trunc(Math.random()*3):handGameNumber = Math.trunc(Math.random()*5);
     
                 playerSelectStyle(handGame, handGameNumber);
@@ -190,7 +213,7 @@
                 }else if(e.target.matches(".lizard") || e.target.matches(".lizard *")){
                     playerSelectStyle(handPlayer,4);
                     gameResult(4,handGameNumber);
-                }
+                };
 
                 countdown.style.display = "none";
                 screenButtonGame.style.display = "none";
@@ -204,12 +227,13 @@
 
     hands.forEach(e => {
         e.addEventListener("click",(e)=>{
-            setcountDown(e);
+            !mode2player?setcountDown(e):Player2();
+            
         });
     });
     handsBonus.forEach(e =>{
         e.addEventListener("click",(e)=>{
-            setcountDown(e);
+            !mode2player?setcountDown(e):Player2();
         });
     });
     playAgain.addEventListener("click",(e)=>{

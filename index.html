@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="homeAndMobile.css">
   <link rel="stylesheet" href="tabletDesktop.css">
   <link rel="stylesheet" href="bonusStyle.css">
+  <link rel="stylesheet" href="mode2player.css">
   
   <title>Rock, Paper, Scissors</title>
 
@@ -31,6 +32,7 @@
   <main>
     <section id="home" class="home">
       <div   class="main-select-hand bonusGame">
+        
         <div>
 
           <div class="paper hands-bonus hand-paper">
@@ -70,7 +72,7 @@
       </div>
 
       <div class="main-select-hand simpleGame">
-
+        <h1>PLAYER 1</h1>
         <div>
 
           <div class="paper hands hand-paper">
@@ -122,22 +124,25 @@
   </main>
   <footer>
     <div class="screenButtonGame">
-      <!-- <input type="radio" checked id="buttonSimGame"> -->
       <p id="pag-game">Bonus Game &rarr; </p>
-      <!-- <input type="radio" id="buttonBonGame"> -->
     </div>
     <div class="rulesImg">
       <h1>RULES</h1>
       <img id="img-rules" src="images/image-rules-bonus.svg" alt="Game-rules">
       <button id="rules-close"><img src="images/icon-close.svg" alt="close-rules"></button>
     </div>
+    <div id="choose-yes-no" class="choose-yes-no">
+      <h1>Are you sure you want to change game mode? <strong>your points will be reset</strong></h1>
+      <button id="yesBut">YES</button>
+      <button id="noBut">NO</button>
+    </div>
     <button id="modeGame">2 PLAYER</button>
     <button id="rules">RULES</button>
   </footer>
-  <!-- <div class="attribution">
+  <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div> -->
+    Coded by <a href="#">Julio Serafim</a>.
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
