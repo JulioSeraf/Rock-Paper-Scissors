@@ -18,6 +18,30 @@
         record=0,
         elementalreadyMoved = false,
         mode2player = false;
+      
+        
+
+    // Selecion de Modo play 1 o play 2
+    document.addEventListener("click",(e)=>{
+        if(e.target.matches("#modeGame")){
+            document.querySelector("#choose-yes-no").style.display = "block";
+        };
+
+        if(e.target.matches("#noBut")){
+            document.querySelector("#choose-yes-no").style.display = "none";
+            return;
+        }else if(e.target.matches("#yesBut")){
+            score.textContent = record = 0;
+            document.querySelector("#choose-yes-no").style.display = "none";
+            if(mode2player == true){
+                player2Game.textContent = "2 PLAYER";
+                mode2player = false;
+            }else{
+                player2Game.textContent = "1 PLAYER";
+                mode2player = true;
+            };
+        };
+    });
 
     // FUNCION DE SCROLL LATERAL
     function swipeArea(){
@@ -131,7 +155,7 @@
             break;
         }
     };
-
+     // Funcion de selecion de hand
     function handsSelect(e){
         if(e.target.matches(".paper") || e.target.matches(".paper *")){
             return 0;
@@ -145,51 +169,7 @@
             return  4;
         };
     };
-    function Player2(el){
-        document.addEventListener("click",(e)=>{
-            console.log(e.target)
-
-            if(e.target.matches("#modeGame")){
-                document.querySelector(".choose-yes-no").style.display = "block";
-            };
-
-            if(e.target.matches("#noBut")){
-                document.querySelector(".choose-yes-no").style.display = "none";
-                return;
-            }else if(e.target.matches("#yesBut")){
-                score.textContent = record = 0;
-                if(player2Game.textContent == "1 PLAYER"){
-                    player2Game.textContent = "2 PLAYER";
-                    mode2player = false;
-                  
-
-                }else{
-                    player2Game.textContent = "1 PLAYER"
-                    document.querySelector(".choose-yes-no").style.display = "none";
-                    mode2player = true;
-                    let firstHand = true;
-                    let hand1,
-                        hand2;
-                
-                    if(firstHand == true){
-                        hand1 = handsSelect(el);
-                        while( firstHand == true){
-                            document.querySelector("#hands-Yes-no").addEventListener("click",(e)=>{
-                                if(e.target.matches("#yesButHand")) firstHand =false;
-                                if(e.target.matches("noButHand")) firstHand = true;
-                                document.querySelector("#hands-Yes-no").style.display = "none";
-                            });
-                        }
-                    }
-
-                }
-                
-            };
-
-        });
-    };
-    Player2();
-
+    
     // FUNCION DE LOGICA DE JOGO
     function gameResult(plaNum,gamNum){
         let msgResult = document.getElementById("msgRe");
@@ -218,7 +198,7 @@
     };
 
  
-    // 1 Player
+    // Modo 1 Player
     function setcountDown(e,play1,play2){
         home.style.display = "none";
         countdown.style.display = "block";
@@ -247,15 +227,23 @@
         },1000);
     };
 
+    // ModO 2 player
+    let hand1 = null;
+    function Player2(el){
+       hand1 = handsSelect(el);
+    console.log(hand1)
+    if(hand1 >= 0){
+
+    }
+
+    };
     // Event clic player
 
     hands.forEach(el => {
         el.addEventListener("click",(el)=>{
-
             !mode2player?setcountDown(el):Player2(el);
-            
         });
-    });
+    });8
     handsBonus.forEach(el =>{
         el.addEventListener("click",(el)=>{
             !mode2player?setcountDown(el):Player2(el);

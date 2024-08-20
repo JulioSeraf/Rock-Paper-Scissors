@@ -1,10 +1,11 @@
 .modeGameChoose{
-    display: none;
+    /* display: none; */
 }
 .handGameChoose{
-    display: none;
+    /* display: none; */
 }
 .choose{
+    display: none;
     position: absolute;
     transform: translate(-50%,-50%);
     left: 50%;
