@@ -13,7 +13,9 @@
         pagGame = document.querySelector("#pag-game"),
         imgRules = document.querySelector("#img-rules"),
         screenButtonGame = document.querySelector(".screenButtonGame"),
-        player2Game = document.getElementById("modeGame");
+        player2Game = document.getElementById("modeGame"),
+        playerh1 = document.querySelectorAll(".playerh1"),
+        headerInfo = document.querySelector(".header-info");
     let count = 3,
         record=0,
         elementalreadyMoved = false,
@@ -35,9 +37,11 @@
             document.querySelector("#choose-yes-no").style.display = "none";
             if(mode2player == true){
                 player2Game.textContent = "2 PLAYER";
+                playerh1.forEach(el => el.style.display = "none");
                 mode2player = false;
             }else{
                 player2Game.textContent = "1 PLAYER";
+                playerh1.forEach(el => el.style.display = "block");
                 mode2player = true;
             };
         };
@@ -64,11 +68,18 @@
                     console.log(positiontouch)
                 
                     if(positiontouch >= 50 ){
-                    home.style.cssText = `left:-100%;
-                    transition:1s all;`;
-                    elementalreadyMoved = true;
-                    pagGame.innerHTML = "&larr; SIMPLES GAME"
-                    imgRules.src = "images/image-rules-bonus.svg"
+                        headerInfo.innerHTML = `<p>ROCK</p>
+                                                <p>PAPER</p>
+                                                <p>SCISSORS</p>
+                                                <p>LIZARD</p>
+                                                <p>SPOCK</p>`;
+                        headerInfo.style.cssText =`font-size:0.8em;
+                        text-aling:center;`
+                        home.style.cssText = `left:-100%;
+                        transition:1s all;`;
+                        elementalreadyMoved = true;
+                        pagGame.innerHTML = "&larr; SIMPLES GAME"
+                        imgRules.src = "images/image-rules-bonus.svg"
                     };
 
                     if(positiontouch < 50 ){
@@ -83,6 +94,11 @@
                 if(positiontouch < 0 && positiontouch > -100 && elementalreadyMoved == true){
         
                     if(positiontouch <= -50 ){
+                        headerInfo.innerHTML = `<p>ROCK</p>
+                                                <p>PAPER</p>
+                                                <p>SCISSORS</p>`;
+                         headerInfo.style.cssText =`font-size:1.3em;
+                        text-aling:center;`
                         home.style.cssText = `left:0%;
                         transition:1s all;`;
                         elementalreadyMoved = false;
