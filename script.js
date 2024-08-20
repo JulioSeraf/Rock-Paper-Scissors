@@ -187,28 +187,40 @@
     };
     
     // FUNCION DE LOGICA DE JOGO
-    function gameResult(plaNum,gamNum){
+    function gameResult(plaNum,gamNum, mod2){
         let msgResult = document.getElementById("msgRe");
 
         if(plaNum == gamNum){
-            msgResult.textContent = "YOU TIED";
+            if(mod2){
+                msgResult.textContent = "PLAYERS TIED";
+            }else{
+                msgResult.textContent = "YOU TIED";
             record = record + 0.5;
+            }
         }else if( //loserd
         (plaNum === 0 && gamNum === 1) || (plaNum === 0 && gamNum === 4) ||// Paper
         (plaNum === 1 && gamNum === 2) || (plaNum === 1 && gamNum === 3) || // Scissors
         (plaNum === 2 && gamNum === 0) || (plaNum === 2 && gamNum === 3) ||// Rock
         (plaNum === 3 && gamNum === 0) || (plaNum === 3 && gamNum === 4) || // spock
         (plaNum === 4 && gamNum === 2) || (plaNum === 4 && gamNum === 1)){ // lizard
-            msgResult.textContent = "YOU LOSE";
-            record = 0;
+            if(mod2){
+                msgResult.textContent = "PLAYER 2 WIN!!";
+            }else{
+                msgResult.textContent = "YOU LOSE";
+                record = 0;
+            };
         }else if(
         (plaNum === 0 && gamNum === 2) || (plaNum === 0 && gamNum === 3) ||//Paper
         (plaNum === 1 && gamNum === 0) || (plaNum === 1 && gamNum === 4) ||//Scissors
         (plaNum === 2 && gamNum === 1) || (plaNum === 2 && gamNum === 4) ||//Rock
         (plaNum === 3 && gamNum === 1) || (plaNum === 3 && gamNum === 2) ||//spock
         (plaNum === 4 && gamNum === 3) || (plaNum === 4 && gamNum === 0)){ // lizard
-            msgResult.textContent = "YOU WIN!";
-            record = record + 1;
+            if(mod2){
+                msgResult.textContent = "PLAYER 1 WIN!!";
+            }else{
+                msgResult.textContent = "YOU WIN!";
+                record = record + 1;
+            };
         };
         score.textContent = record;
     };
@@ -233,7 +245,7 @@
                 playerSelectStyle(handGame, handGameNumber);
                 
                 playerSelectStyle(handPlayer,handsSelect(e));
-                gameResult(handsSelect(e),handGameNumber);
+                gameResult(handsSelect(e),handGameNumber,false);
 
                 countdown.style.display = "none";
                 screenButtonGame.style.display = "none";
@@ -246,22 +258,64 @@
     // ModO 2 player
     let hand1 = null,
     hand2 = null,
-    play2 = false;
+    play2 = false,
+    hansCompleted = false;
+
     function Player2(el){
-       hand1 = handsSelect(el);
-        handchangeplayer.style.display = "none";
-        handchangeplayer.addEventListener("click",(e)=>{
-            if(e.target.matches("#yesButHand")){
-                play2 = true;
-            }else{
-                play2 = false;
-            };
 
-        });
+        handchangeplayer.style.display = "block";
 
-       if(play2 == true){
+        if(!play2){
+            handchangeplayer.addEventListener("click",(e)=>{
+                if(e.target.matches("#yesButHand")){
+                    playerh1.forEach(el => el.textContent = "PLAYER 2:")
+                    play2 = true;
+                    handchangeplayer.style.display = "none";
+                    hand2 = handsSelect(el);
+                }else if(e.target.matches("#noButHand")){
+                    handchangeplayer.style.display = "none";
+                };
+            });
+        };
+
+
+        if(play2){
+            handchangeplayer.addEventListener("click",(e)=>{
+                if(e.target.matches("#yesButHand")){
+                    handchangeplayer.style.display = "none";
+                    hand1 = handsSelect(el);
+                    hansCompleted = true;
+                }else if(e.target.matches("#noButHand")){
+                    handchangeplayer.style.display = "none";
+                };
+
+                if(hansCompleted){
+                    console.log(hand1,hand2)
+                    home.style.display = "none";
+                    countdown.style.display = "block";
+                    playerh1.forEach(el => el.textContent = "PLAYER 1:")
+                    let stopTime = setInterval(()=>{
+                            if(count == 1){ 
+                                count = 4;
+                
+                                clearInterval(stopTime);
+                    
+                                playerSelectStyle(handGame,hand2);
+                                
+                                playerSelectStyle(handPlayer,hand1);
+                                gameResult(hand1,hand2,true);
+                
+                                countdown.style.display = "none";
+                                screenButtonGame.style.display = "none";
+                                game.style.display = "flex";
+                            };
+                            countdown.innerHTML = `<h1>${--count}</h1>`;
+                        },1000);
+                };
+            });
             
-       }
+        };
+
 
     };
     // Event click player
