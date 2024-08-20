@@ -15,13 +15,13 @@
         screenButtonGame = document.querySelector(".screenButtonGame"),
         player2Game = document.getElementById("modeGame"),
         playerh1 = document.querySelectorAll(".playerh1"),
-        headerInfo = document.querySelector(".header-info");
+        headerInfo = document.querySelector(".header-info"),
+        handchangeplayer = document.querySelector(".handGameChoose");
     let count = 3,
         record=0,
         elementalreadyMoved = false,
         mode2player = false;
       
-        
 
     // Selecion de Modo play 1 o play 2
     document.addEventListener("click",(e)=>{
@@ -244,16 +244,27 @@
     };
 
     // ModO 2 player
-    let hand1 = null;
+    let hand1 = null,
+    hand2 = null,
+    play2 = false;
     function Player2(el){
        hand1 = handsSelect(el);
-    console.log(hand1)
-    if(hand1 >= 0){
+        handchangeplayer.style.display = "none";
+        handchangeplayer.addEventListener("click",(e)=>{
+            if(e.target.matches("#yesButHand")){
+                play2 = true;
+            }else{
+                play2 = false;
+            };
 
-    }
+        });
+
+       if(play2 == true){
+            
+       }
 
     };
-    // Event clic player
+    // Event click player
 
     hands.forEach(el => {
         el.addEventListener("click",(el)=>{
