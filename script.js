@@ -132,6 +132,64 @@
         }
     };
 
+    function handsSelect(e){
+        if(e.target.matches(".paper") || e.target.matches(".paper *")){
+            return 0;
+        }else if(e.target.matches(".scissors")||e.target.matches(".scissors *")){
+           return 1;
+        }else if(e.target.matches(".rock *") || e.target.matches(".rock")){
+            return 2;
+        }else if(e.target.matches(".spock") || e.target.matches(".spock *")){
+            return 3;
+        }else if(e.target.matches(".lizard") || e.target.matches(".lizard *")){
+            return  4;
+        };
+    };
+    function Player2(el){
+        document.addEventListener("click",(e)=>{
+            console.log(e.target)
+
+            if(e.target.matches("#modeGame")){
+                document.querySelector(".choose-yes-no").style.display = "block";
+            };
+
+            if(e.target.matches("#noBut")){
+                document.querySelector(".choose-yes-no").style.display = "none";
+                return;
+            }else if(e.target.matches("#yesBut")){
+                score.textContent = record = 0;
+                if(player2Game.textContent == "1 PLAYER"){
+                    player2Game.textContent = "2 PLAYER";
+                    mode2player = false;
+                  
+
+                }else{
+                    player2Game.textContent = "1 PLAYER"
+                    document.querySelector(".choose-yes-no").style.display = "none";
+                    mode2player = true;
+                    let firstHand = true;
+                    let hand1,
+                        hand2;
+                
+                    if(firstHand == true){
+                        hand1 = handsSelect(el);
+                        while( firstHand == true){
+                            document.querySelector("#hands-Yes-no").addEventListener("click",(e)=>{
+                                if(e.target.matches("#yesButHand")) firstHand =false;
+                                if(e.target.matches("noButHand")) firstHand = true;
+                                document.querySelector("#hands-Yes-no").style.display = "none";
+                            });
+                        }
+                    }
+
+                }
+                
+            };
+
+        });
+    };
+    Player2();
+
     // FUNCION DE LOGICA DE JOGO
     function gameResult(plaNum,gamNum){
         let msgResult = document.getElementById("msgRe");
@@ -159,29 +217,8 @@
         score.textContent = record;
     };
 
-    function Player2(){
-        document.addEventListener("click",(e)=>{
-            console.log(e.target)
-
-            if(e.target.matches("#modeGame")){
-                document.querySelector(".choose-yes-no").style.display = "block";
-            };
-
-            if(e.target.matches("#noBut")){
-                document.querySelector(".choose-yes-no").style.display = "none";
-                return;
-            }else if(e.target.matches("#yesBut")){
-                player2Game.textContent = "1 PLAYER"
-                document.querySelector(".choose-yes-no").style.display = "none";
-                mode2player = true;
-
-
-            };
-
-        });
-    };
-    Player2();
-    
+ 
+    // 1 Player
     function setcountDown(e,play1,play2){
         home.style.display = "none";
         countdown.style.display = "block";
@@ -191,29 +228,16 @@
 
             if(count == 1){ 
                 count = 4;
+                // let hand1Player = hands(e);
 
                 clearInterval(stopTime);
         
                 elementalreadyMoved == false ? handGameNumber = Math.trunc(Math.random()*3):handGameNumber = Math.trunc(Math.random()*5);
     
                 playerSelectStyle(handGame, handGameNumber);
-
-                if(e.target.matches(".paper") || e.target.matches(".paper *")){
-                    playerSelectStyle(handPlayer,0);
-                    gameResult(0,handGameNumber);
-                }else if(e.target.matches(".scissors")||e.target.matches(".scissors *")){
-                    playerSelectStyle(handPlayer,1);
-                    gameResult(1,handGameNumber);
-                }else if(e.target.matches(".rock *") || e.target.matches(".rock")){
-                    playerSelectStyle(handPlayer,2);
-                    gameResult(2,handGameNumber);
-                }else if(e.target.matches(".spock") || e.target.matches(".spock *")){
-                    playerSelectStyle(handPlayer,3);
-                    gameResult(3,handGameNumber);
-                }else if(e.target.matches(".lizard") || e.target.matches(".lizard *")){
-                    playerSelectStyle(handPlayer,4);
-                    gameResult(4,handGameNumber);
-                };
+                
+                playerSelectStyle(handPlayer,handsSelect(e));
+                gameResult(handsSelect(e),handGameNumber);
 
                 countdown.style.display = "none";
                 screenButtonGame.style.display = "none";
@@ -225,15 +249,16 @@
 
     // Event clic player
 
-    hands.forEach(e => {
-        e.addEventListener("click",(e)=>{
-            !mode2player?setcountDown(e):Player2();
+    hands.forEach(el => {
+        el.addEventListener("click",(el)=>{
+
+            !mode2player?setcountDown(el):Player2(el);
             
         });
     });
-    handsBonus.forEach(e =>{
-        e.addEventListener("click",(e)=>{
-            !mode2player?setcountDown(e):Player2();
+    handsBonus.forEach(el =>{
+        el.addEventListener("click",(el)=>{
+            !mode2player?setcountDown(el):Player2(el);
         });
     });
     playAgain.addEventListener("click",(e)=>{
