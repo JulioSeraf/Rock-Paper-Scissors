@@ -21,7 +21,9 @@
         headerPlay1 = document.getElementById("header-play1"),
         headerPlay2 = document.getElementById("header-play2"),
         pPlay1 = document.getElementById("p-scorePlay1"),
-        pPlay2 = document.getElementById("p-scoreSinglePlay2");
+        pPlay2 = document.getElementById("p-scoreSinglePlay2"),
+        bonusGame = document.querySelector(".bonusGame"),
+        simpleGame = document.querySelector(".simpleGame");
         
     let count = 3,
         recordplay2=0,
@@ -67,7 +69,23 @@
     // FUNCION DE SCROLL LATERAL
     function swipeArea(){
         let startTouch = 0,
-        touchloq = 0;
+        touchloq = 0,
+        bonus = false;
+
+        
+        if(window.innerWidth >=450){
+            pagGame.addEventListener("click",(e)=>{
+                if(!bonus){
+                    bonus = true;
+                    bonusGame.style.display = "block";
+                    simpleGame.style.display = "none";
+                }else{
+                    bonus = false;
+                    bonusGame.style.display = "none";
+                    simpleGame.style.display = "block";
+                }
+            })
+        }
         
         home.addEventListener("touchstart",(e)=>{
             startTouch = e.changedTouches[0].screenX;
@@ -82,8 +100,6 @@
             if(window.innerWidth <= 450 ){
                 
                 if(positiontouch > 0 && positiontouch < 100 && elementalreadyMoved == false){
-                    console.log(positiontouch)
-                
                     if(positiontouch >= 50 ){
                         headerInfo.innerHTML = `<p>ROCK</p>
                                                 <p>PAPER</p>
@@ -94,7 +110,7 @@
                         home.style.cssText = `left:-100%;
                         transition:1s all;`;
                         elementalreadyMoved = true;
-                        pagGame.innerHTML = "&larr; SIMPLES GAME"
+                        pagGame.innerHTML = "&larr; SIMPLE GAME"
                         imgRules.src = "images/image-rules-bonus.svg"
                     };
 
@@ -250,6 +266,7 @@
     function setcountDown(e){
         home.style.display = "none";
         countdown.style.display = "block";
+        pagGame.style.display = "none";
         
            stopTime = setInterval(()=>{
         let handGameNumber;
@@ -291,6 +308,7 @@
         };
            
         if(hansCompleted == 2){
+            pagGame.style.display = "none";
             home.style.display = "none";
             countdown.style.display = "block";
             playerh1.forEach(el =>{ el.textContent = "PLAYER 1:"})
@@ -328,6 +346,7 @@
     playAgain.addEventListener("click",(e)=>{
         home.style.display = "block";
         game.style.display = "none";
+        pagGame.style.display = "block";
         screenButtonGame.style.display = "block";
         hand1.length = 0;
         hansCompleted = 0;

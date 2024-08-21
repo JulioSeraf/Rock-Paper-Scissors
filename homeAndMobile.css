@@ -100,7 +100,7 @@ section{
     width: 39%;
     height: 59%;
     border-radius: 50%;
-    box-shadow: inset 0px -7px 1px rgba(0, 0, 0, 0.342);
+    box-shadow: inset 0px -10px 5px rgba(0, 0, 0, 0.342);
 }
 .hands:active{
     box-shadow: 0px 0px 5px white;
@@ -112,7 +112,7 @@ section{
     height:75%;
     border-radius: 50%;
     background-color: white;
-    box-shadow:inset 0px 6px 5px rgba(0, 0, 0, 0.285);
+    box-shadow:inset 0px 0px 6px 5px rgba(0, 0, 0, 0.285);
 }
 .hand-inside img{
     width: 45%;
@@ -186,7 +186,7 @@ section{
     display:block;
     color:hsl(237, 49%, 15%);
     font-weight: 700;
-    font-size: 1em;
+    font-size:1em;;
     width:60%;
     height: 55px;
     border-radius: 10px;
@@ -233,6 +233,7 @@ footer>button{
     padding: 10px 30px;
     font-size: 1em;
     min-width: 30%;
+    margin: 0 5px;
 }
 footer>button:hover{
     border: 3px solid white;
@@ -273,6 +274,7 @@ footer>button:hover{
     color:  hsl(229, 25%, 31%);
     text-align: center;
     width: 100%;
+    height: max-content;
 }
 .attribution a{
     color: white;

@@ -3,18 +3,20 @@
     body{
         max-width:100%;
         height: 100vh;
-        min-height: 400px;
+        min-height: 450px;
+    }
+    header{
+        flex-grow: 0;
     }
     .header-div{
         width: 55%;
         min-width: 400px;
     }
     .home{
-        width: 100%;
+        width: 100% ;
+        border: 1px solid white;
         left: 0% !important;
-        
     }
-   
     .main-select-hand{
         width: 450px;
         margin: auto;
@@ -22,10 +24,14 @@
         background-position-y:70%;
     }
     .simpleGame{
+        display: block;
        float: none;
     }
     
     .bonusGame{
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
        display: none;
     }
     .hands{
@@ -44,6 +50,11 @@
     .simpleGame .hand-rock{
         top:10%;
     }
+    /* .countdown>h1{
+        transform: translate(0, -5%);
+       font-size: 15em;
+    } */
+    
     .main-result{
         width: 100%;
     }
@@ -81,7 +92,8 @@
         font-size: 2.5em;
     }
     .result-msg > button{
-        width: 15vw;
+        /* width: 15vw; */
+        font-size: 0.8em;
         height: 40px;
     }
     footer{
