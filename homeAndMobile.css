@@ -109,7 +109,7 @@ section{
     border-radius: 50%;
     box-shadow: inset 0px -10px 5px rgba(0, 0, 0, 0.342);
 }
-.hands:hover{
+.hands:active{
     transform: scale(1.1);
     box-shadow: 0px 0px 5px white;
 }
@@ -186,8 +186,8 @@ section{
 .div-winer{
     animation:backgraundAnima 1s ease-in-out 0.1s infinite ;
     position: absolute;
-    width:130%;
-    height:130%;
+    width:110%;
+    height:110%;
     border-radius: 50%;
     left: 50%;
     top: 50%;
@@ -202,8 +202,8 @@ section{
     top: 50%;
     transform: translate(-50%,-50%);
     /* border: 20px solid rgba(255, 255, 255, 0.438); */
-    width:140%;
-    height:140%;
+    width:110%;
+    height:110%;
     border-radius: 50%;
 }
 
