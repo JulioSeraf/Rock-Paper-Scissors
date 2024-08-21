@@ -2,7 +2,8 @@
 .bonusGame{
     float: right;
     background-image: url(images/bg-pentagon.svg);
-    background-size: auto 45%; background-position-y:40%;
+    background-size: auto 45%; 
+    background-position-y:40%;
 }
 
 .hands-bonus{

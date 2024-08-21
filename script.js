@@ -30,7 +30,8 @@
         recordplay1 = 0,
         elementalreadyMoved = false,
         mode2player = false,
-        stopTime;
+        stopTime,
+        bonus = false;
       
 
     // Selecion de Modo play 1 o play 2
@@ -65,27 +66,14 @@
             };
         };
     });
+   
+ 
 
     // FUNCION DE SCROLL LATERAL
     function swipeArea(){
         let startTouch = 0,
-        touchloq = 0,
-        bonus = false;
-
+        touchloq = 0;
         
-        if(window.innerWidth >=450){
-            pagGame.addEventListener("click",(e)=>{
-                if(!bonus){
-                    bonus = true;
-                    bonusGame.style.display = "block";
-                    simpleGame.style.display = "none";
-                }else{
-                    bonus = false;
-                    bonusGame.style.display = "none";
-                    simpleGame.style.display = "block";
-                }
-            })
-        }
         
         home.addEventListener("touchstart",(e)=>{
             startTouch = e.changedTouches[0].screenX;
@@ -97,8 +85,8 @@
             touchloq = e.changedTouches[0].screenX;
             let positiontouch = startTouch - touchloq;
 
-            if(window.innerWidth <= 450 ){
-                
+            if(window.innerWidth ){
+               
                 if(positiontouch > 0 && positiontouch < 100 && elementalreadyMoved == false){
                     if(positiontouch >= 50 ){
                         headerInfo.innerHTML = `<p>ROCK</p>
@@ -107,7 +95,7 @@
                                                 <p>LIZARD</p>
                                                 <p>SPOCK</p>`;
                         headerInfo.style.cssText +=`font-size:0.8em;`
-                        home.style.cssText = `left:-100%;
+                        home.style.cssText += `left:-100%;
                         transition:1s all;`;
                         elementalreadyMoved = true;
                         pagGame.innerHTML = "&larr; SIMPLE GAME"
@@ -115,11 +103,11 @@
                     };
 
                     if(positiontouch < 50 ){
-                        home.style.cssText = `left:0%;
+                        home.style.cssText += `left:0%;
                     transition:1s all;`;
                     };
                     
-                    if(window.innerWidth >= 450) document.querySelector(".simpleGame").style.display = "none";
+                    // if(window.innerWidth >= 450) document.querySelector(".simpleGame").style.display = "none";
                 };
 
 
@@ -130,7 +118,7 @@
                                                 <p>PAPER</p>
                                                 <p>SCISSORS</p>`;
                          headerInfo.style.cssText +=`font-size:1.3em;`
-                        home.style.cssText = `left:0%;
+                        home.style.cssText += `left:0%;
                         transition:1s all;`;
                         elementalreadyMoved = false;
                         pagGame.innerHTML = "BONUS GAME &rarr;";
@@ -138,11 +126,11 @@
                     };
 
                     if(positiontouch > -50){
-                        home.style.cssText = `left:-100%;
+                        home.style.cssText += `left:-100%;
                         transition: 1s all;`
                     };
 
-                    if(window.innerWidth >= 450) document.querySelector(".bonusGame").style.display = "none";
+                    // if(window.innerWidth >= 450) document.querySelector(".bonusGame").style.display = "none";
                     
                 };
             };
@@ -365,5 +353,4 @@
         height: 0%;
         top: -100%;
     `});
-
-
+    
