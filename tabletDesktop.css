@@ -17,7 +17,7 @@
         position: absolute;
         display: flex;
         width: 200% ;
-        /* left: -100% ; */
+        left: 0% ;
     }
     .main-select-hand{
         width: 450px;
@@ -59,6 +59,14 @@
     .section-game-hands{
         width: 20%;
         height: 50%;
+    }
+    .div-winer{
+        width:130%;
+        height:140%;
+    }
+    .div-winer div{
+        width:150%;
+        height:160%;
     }
     .player-hand{
         left: 15%;

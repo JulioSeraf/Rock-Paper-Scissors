@@ -218,6 +218,15 @@
                 msgResult.textContent = "YOU TIED";
             recordplay2 = recordplay2 + 0.5;
             }
+            handGame.innerHTML += `
+            <div class="div-winer">
+                <div></div>
+            </div>`;
+            handPlayer.innerHTML += `
+            <div class="div-winer">
+                <div></div>
+            </div>
+            `;
         }else if( //loserd
         (plaNum === 0 && gamNum === 1) || (plaNum === 0 && gamNum === 4) ||// Paper
         (plaNum === 1 && gamNum === 2) || (plaNum === 1 && gamNum === 3) || // Scissors
@@ -231,6 +240,10 @@
                 msgResult.textContent = "YOU LOSE";
                 recordplay2 = 0;
             };
+            handGame.innerHTML += `
+                <div class="div-winer">
+                    <div></div>
+                </div>`;
         }else if(
         (plaNum === 0 && gamNum === 2) || (plaNum === 0 && gamNum === 3) ||//Paper
         (plaNum === 1 && gamNum === 0) || (plaNum === 1 && gamNum === 4) ||//Scissors
@@ -244,6 +257,10 @@
                 msgResult.textContent = "YOU WIN!";
                 recordplay2 = recordplay2 + 1;
             };
+            handPlayer.innerHTML += `
+                <div class="div-winer">
+                    <div></div>
+                </div>`;
         };
         scoreSinglePlay2.textContent = recordplay2;
         scorePlay1.textContent = recordplay1;
@@ -322,17 +339,17 @@
     // Event click player
 
     hands.forEach(el => {
-        el.addEventListener("click",(el)=>{
+        el.addEventListener("touchend",(el)=>{
             !mode2player?setcountDown(el):Player2(el);
         },true);
     });
     handsBonus.forEach(el =>{
-        el.addEventListener("click",(el)=>{
+        el.addEventListener("touchend",(el)=>{
             !mode2player?setcountDown(el):Player2(el);
         },true);
     });
     playAgain.addEventListener("click",(e)=>{
-        home.style.display = "block";
+        home.style.display = "flex";
         game.style.display = "none";
         pagGame.style.display = "block";
         screenButtonGame.style.display = "block";
