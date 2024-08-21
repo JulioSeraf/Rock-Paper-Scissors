@@ -256,84 +256,63 @@
     };
 
     // ModO 2 player
-    let hand1 = null,
-    hand2 = null,
-    play2 = false,
-    hansCompleted = false;
+    
+    let play2 = 0,
+    hansCompleted = 0,
+    hand1 =[],
+    hand2 = null;
 
     function Player2(el){
-
-        handchangeplayer.style.display = "block";
-
-        if(!play2){
-            handchangeplayer.addEventListener("click",(e)=>{
-                if(e.target.matches("#yesButHand")){
-                    playerh1.forEach(el => el.textContent = "PLAYER 2:")
-                    play2 = true;
-                    handchangeplayer.style.display = "none";
-                    hand2 = handsSelect(el);
-                }else if(e.target.matches("#noButHand")){
-                    handchangeplayer.style.display = "none";
-                };
-            });
+        
+        if(play2 <= 1){
+            playerh1.forEach(el => el.textContent = "PLAYER 2:")
+            play2++;
+            hansCompleted++;
+            hand1.push(handsSelect(el))
         };
-
-
-        if(play2){
-            handchangeplayer.addEventListener("click",(e)=>{
-                if(e.target.matches("#yesButHand")){
-                    handchangeplayer.style.display = "none";
-                    hand1 = handsSelect(el);
-                    hansCompleted = true;
-                }else if(e.target.matches("#noButHand")){
-                    handchangeplayer.style.display = "none";
-                };
-
-                if(hansCompleted){
-                    console.log(hand1,hand2)
-                    home.style.display = "none";
-                    countdown.style.display = "block";
-                    playerh1.forEach(el => el.textContent = "PLAYER 1:")
-                    let stopTime = setInterval(()=>{
-                            if(count == 1){ 
-                                count = 4;
-                
-                                clearInterval(stopTime);
-                    
-                                playerSelectStyle(handGame,hand2);
-                                
-                                playerSelectStyle(handPlayer,hand1);
-                                gameResult(hand1,hand2,true);
-                
-                                countdown.style.display = "none";
-                                screenButtonGame.style.display = "none";
-                                game.style.display = "flex";
-                            };
-                            countdown.innerHTML = `<h1>${--count}</h1>`;
-                        },1000);
-                };
-            });
+           
+        if(hansCompleted == 2){
+            home.style.display = "none";
+            countdown.style.display = "block";
+            playerh1.forEach(el =>{ el.textContent = "PLAYER 1:"})
+            let stopTime = setInterval(()=>{
+                    if(count == 1){ 
+                        count = 4;
+        
+                        clearInterval(stopTime);
             
+                        playerSelectStyle(handGame,hand1[1]);
+                        
+                        playerSelectStyle(handPlayer,hand1[0]);
+                        gameResult(hand1[0],hand1[1],true);
+        
+                        countdown.style.display = "none";
+                        screenButtonGame.style.display = "none";
+                        game.style.display = "flex";
+                    };
+                    countdown.innerHTML = `<h1>${--count}</h1>`;
+                },1000);
         };
-
-
     };
     // Event click player
 
     hands.forEach(el => {
         el.addEventListener("click",(el)=>{
             !mode2player?setcountDown(el):Player2(el);
-        });
-    });8
+        },true);
+    });
     handsBonus.forEach(el =>{
         el.addEventListener("click",(el)=>{
             !mode2player?setcountDown(el):Player2(el);
-        });
+        },true);
     });
     playAgain.addEventListener("click",(e)=>{
         home.style.display = "block";
         game.style.display = "none";
         screenButtonGame.style.display = "block";
+        hand1.length = 0;
+        hansCompleted = 0;
+        play2 = 0;
 
     });
     document.getElementById("rules").addEventListener("click",(e)=> rulesImg.style.cssText=`

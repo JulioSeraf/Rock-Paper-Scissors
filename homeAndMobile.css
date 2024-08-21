@@ -41,6 +41,7 @@ header{
 .header-info{
     font-size: 1.3em;
     flex-grow: 4;
+    /* text-align: center; */
 }
 .header-score{
     display: flex;
