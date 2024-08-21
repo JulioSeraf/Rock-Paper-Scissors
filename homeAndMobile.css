@@ -210,17 +210,19 @@ footer{
     align-items:center;
     justify-content: center;
     flex-grow: 1;
+    /* position: relative; */
 
 }
 .screenButtonGame{
     position:absolute;
-    bottom: 14%;
+    bottom: 0%;
     left: 50%;
     transform: translate(-50%);
     background-color: inherit;
     color:  hsl(217, 16%, 45%, 80%);
     font-size: 1.5em;
     text-align: center;
+    height: max-content;  
 }
 footer>button{
     color: hsl(218, 23%, 70%);
@@ -265,4 +267,14 @@ footer>button:hover{
     width: 10%;
     border: none;
     background-color: inherit;
+}
+
+.attribution{
+    color:  hsl(229, 25%, 31%);
+    text-align: center;
+    width: 100%;
+}
+.attribution a{
+    color: white;
+    text-decoration: none;
 }

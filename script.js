@@ -6,7 +6,8 @@
         game = document.getElementById("game"),
         handPlayer = document.getElementById("player-hand"),
         handGame = document.querySelector(".game-hand"),
-        score = document.getElementById("score"),
+        scoreSinglePlay2 = document.getElementById("score-single-play2"),
+        scorePlay1 = document.getElementById("score-play1"),
         playAgain = document.querySelector(".play-again"),
         countdown = document.querySelector(".countdown"),
         touchscrren = document.querySelector(".touch"),
@@ -16,11 +17,18 @@
         player2Game = document.getElementById("modeGame"),
         playerh1 = document.querySelectorAll(".playerh1"),
         headerInfo = document.querySelector(".header-info"),
-        handchangeplayer = document.querySelector(".handGameChoose");
+        handchangeplayer = document.querySelector(".handGameChoose"),
+        headerPlay1 = document.getElementById("header-play1"),
+        headerPlay2 = document.getElementById("header-play2"),
+        pPlay1 = document.getElementById("p-scorePlay1"),
+        pPlay2 = document.getElementById("p-scoreSinglePlay2");
+        
     let count = 3,
-        record=0,
+        recordplay2=0,
+        recordplay1 = 0,
         elementalreadyMoved = false,
-        mode2player = false;
+        mode2player = false,
+        stopTime;
       
 
     // Selecion de Modo play 1 o play 2
@@ -33,16 +41,25 @@
             document.querySelector("#choose-yes-no").style.display = "none";
             return;
         }else if(e.target.matches("#yesBut")){
-            score.textContent = record = 0;
+            scoreSinglePlay2.textContent = recordplay2 = 0;
+            scorePlay1.textContent = recordplay1 = 0;
             document.querySelector("#choose-yes-no").style.display = "none";
             if(mode2player == true){
                 player2Game.textContent = "2 PLAYER";
                 playerh1.forEach(el => el.style.display = "none");
                 mode2player = false;
+                headerPlay1.style.display = "none";
+                headerInfo.style.textAlign = "left";
+                pPlay2.textContent = "score";
             }else{
                 player2Game.textContent = "1 PLAYER";
                 playerh1.forEach(el => el.style.display = "block");
                 mode2player = true;
+                headerPlay1.style.display = "block";
+                headerInfo.style.textAlign = "Center";
+                pPlay1.textContent = "P1";
+                pPlay2.textContent = "P2";
+
             };
         };
     });
@@ -73,8 +90,7 @@
                                                 <p>SCISSORS</p>
                                                 <p>LIZARD</p>
                                                 <p>SPOCK</p>`;
-                        headerInfo.style.cssText =`font-size:0.8em;
-                        text-aling:center;`
+                        headerInfo.style.cssText +=`font-size:0.8em;`
                         home.style.cssText = `left:-100%;
                         transition:1s all;`;
                         elementalreadyMoved = true;
@@ -97,8 +113,7 @@
                         headerInfo.innerHTML = `<p>ROCK</p>
                                                 <p>PAPER</p>
                                                 <p>SCISSORS</p>`;
-                         headerInfo.style.cssText =`font-size:1.3em;
-                        text-aling:center;`
+                         headerInfo.style.cssText +=`font-size:1.3em;`
                         home.style.cssText = `left:0%;
                         transition:1s all;`;
                         elementalreadyMoved = false;
@@ -192,10 +207,12 @@
 
         if(plaNum == gamNum){
             if(mod2){
-                msgResult.textContent = "PLAYERS TIED";
+                msgResult.textContent = "TIE";
+                recordplay2 = recordplay2 + 0.5;
+                recordplay1 = recordplay1 + 0.5;
             }else{
                 msgResult.textContent = "YOU TIED";
-            record = record + 0.5;
+            recordplay2 = recordplay2 + 0.5;
             }
         }else if( //loserd
         (plaNum === 0 && gamNum === 1) || (plaNum === 0 && gamNum === 4) ||// Paper
@@ -204,10 +221,11 @@
         (plaNum === 3 && gamNum === 0) || (plaNum === 3 && gamNum === 4) || // spock
         (plaNum === 4 && gamNum === 2) || (plaNum === 4 && gamNum === 1)){ // lizard
             if(mod2){
-                msgResult.textContent = "PLAYER 2 WIN!!";
+                msgResult.textContent = "P2 WIN!!";
+                recordplay2 = recordplay2 + 1;
             }else{
                 msgResult.textContent = "YOU LOSE";
-                record = 0;
+                recordplay2 = 0;
             };
         }else if(
         (plaNum === 0 && gamNum === 2) || (plaNum === 0 && gamNum === 3) ||//Paper
@@ -216,22 +234,24 @@
         (plaNum === 3 && gamNum === 1) || (plaNum === 3 && gamNum === 2) ||//spock
         (plaNum === 4 && gamNum === 3) || (plaNum === 4 && gamNum === 0)){ // lizard
             if(mod2){
-                msgResult.textContent = "PLAYER 1 WIN!!";
+                msgResult.textContent = "P1 WIN!!";
+                recordplay1 = recordplay1 + 1;
             }else{
                 msgResult.textContent = "YOU WIN!";
-                record = record + 1;
+                recordplay2 = recordplay2 + 1;
             };
         };
-        score.textContent = record;
+        scoreSinglePlay2.textContent = recordplay2;
+        scorePlay1.textContent = recordplay1;
     };
 
  
     // Modo 1 Player
-    function setcountDown(e,play1,play2){
+    function setcountDown(e){
         home.style.display = "none";
         countdown.style.display = "block";
         
-        let stopTime = setInterval(()=>{
+           stopTime = setInterval(()=>{
         let handGameNumber;
 
             if(count == 1){ 
@@ -263,7 +283,6 @@
     hand2 = null;
 
     function Player2(el){
-        
         if(play2 <= 1){
             playerh1.forEach(el => el.textContent = "PLAYER 2:")
             play2++;
@@ -275,7 +294,7 @@
             home.style.display = "none";
             countdown.style.display = "block";
             playerh1.forEach(el =>{ el.textContent = "PLAYER 1:"})
-            let stopTime = setInterval(()=>{
+                stopTime = setInterval(()=>{
                     if(count == 1){ 
                         count = 4;
         

@@ -1,4 +1,5 @@
     @media screen and (min-width:451px) {
+    
     body{
         max-width:100%;
         height: 100vh;
@@ -13,10 +14,12 @@
         left: 0% !important;
         
     }
+   
     .main-select-hand{
         width: 450px;
         margin: auto;
         background-size: 50% 50%;
+        background-position-y:70%;
     }
     .simpleGame{
        float: none;
@@ -26,19 +29,19 @@
        display: none;
     }
     .hands{
-        width:35%;
-        height: 68%;
+        width:30%;
+        height: 70%;
     }
-    div .hand-paper{
+    .simpleGame .hand-paper{
         top:20%;
-        left: 10%;
+        left: 5%;
     }
 
-    div .hand-scissors{
+    .simpleGame .hand-scissors{
         top: 20%;
-        right:10%;
+        right:5%;
     }
-    div .hand-rock{
+    .simpleGame .hand-rock{
         top:10%;
     }
     .main-result{
@@ -66,6 +69,10 @@
         right: 19.3%;
         font-size: 1.2em;
     }
+    .screenButtonGame{
+      bottom: 0%;
+      height: max-content;      
+    }
     .result-msg {
        position: absolute;
        top: 40%;
@@ -83,10 +90,17 @@
         justify-content: right;
     }
     footer > button{
-        min-width: 50px; 
+        min-width: 10px; 
         max-width: max-content;
         margin-right: 30px;   
-        margin: 10px;
+        margin: 5px;
+        font-size: 0.5em;
         
+        
+    }
+    .attribution{
+        text-align: left;
+        margin:2px;
+        font-size: 10px;
     }
 }
